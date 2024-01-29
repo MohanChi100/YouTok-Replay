@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      width: 300px;
+      padding: 20px;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-container h1 {
+      text-align: center;
+    }
+
+    .login-form {
+      margin-top: 20px;
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .login-form input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="login-container">
+  <h1>Login</h1>
+<!--  <img src="https://placehold.co/100x80">-->
+  <form class="login-form" onsubmit="return handleLogin()">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    <br>
+    <input type="submit" value="Login">
+  </form>
+</div>
+
+<script>
+  function handleLogin() {
+    var username = document.getElementById('username').value;
+    console.log(username)
+    var password = document.getElementById('password').value;
+    console.log(password)
+    var loginSuccess = false;
+
+    var fd = new FormData();
+    fd.append('uid', username);
+    fd.append('password', password);
+    $.ajax({
+      url: 'https://youtok-api.momochi.me/VerifyUser',
+      data: fd,
+      processData: false,
+      contentType: false,
+      type: 'POST',
+      success: function (data) {
+        console.log('data: '+ data);
+        if (data == 'true')
+          loginSuccess = true;
+        console.log('login: ' + data);
+        if (loginSuccess) {
+          // Redirect to home.html with the username as a URL parameter
+          window.location.href = 'home.html?username=' + encodeURIComponent(username);
+        } else {
+          alert('Invalid username or password. Please try again.');
+        }
+      }
+    });
+    return false;
+  }
+</script>
+</body>
+</html>

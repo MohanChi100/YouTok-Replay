@@ -1,0 +1,177 @@
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.overlay {
+  width: 100%;
+  height: calc(100vh - 80px);
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*background: rgba(255,0,0,0.5);*/
+}
+
+.actions {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 60px;
+  z-index: 20;
+  transform: translateY(-50%);
+}
+
+.actions img {
+  width: 30px;
+  margin: 10px;
+  filter: invert(0.95);
+}
+
+.active {
+ filter: invert(39%) sepia(71%) saturate(1705%) hue-rotate(332deg) brightness(96%) contrast(106%) !important;
+}
+
+.ytp-chrome-top {
+  display: none;
+}
+
+.ytp-chrome-bottom {
+  display: none;
+}
+
+.bottom-modal .modal-dialog {
+  position: fixed;
+  bottom:0;
+  margin: 0;
+  width: 100%;
+  height: auto
+}
+
+#comment-list {
+  padding: 0;
+  list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.comment-item {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.comment-modal-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+/* profile and like */
+.profile-photo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.author-name {
+  font-size: 14px;
+  color: darkgrey;
+}
+
+.comment-text {
+  margin-left: 30px;
+  margin-right: 10px;
+}
+
+.like-section {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.like-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.like-count {
+  font-size: 12px;
+  margin-right: 20px;
+}
+
+.other-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 20px;
+}
+
+.comment-input-section {
+  position: fixed;
+  bottom: 5px;
+  left: 2px;
+  right: 2px;
+  background-color: #fff; /* Add background color for better visibility */
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  z-index: 100; /* Ensure it's above other content */
+}
+
+#comment-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+#comment-submit {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#comment-submit img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  filter: invert(0.50);
+  margin: 0 auto;
+}
+
+#comment-submit:focus {
+  outline: none; /* Remove the button focus outline for better appearance */
+}
